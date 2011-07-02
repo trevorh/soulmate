@@ -23,10 +23,11 @@ Jeweler::Tasks.new do |gem|
   gem.homepage  = "http://github.com/seatgeek/soulmate"
   gem.authors   = ["Eric Waller"]
   # The versions specified here are pretty arbitrary right now...
-  gem.add_runtime_dependency 'redis',   '>= 2.0'
-  gem.add_runtime_dependency 'vegas',   '>= 0.1.0'
-  gem.add_runtime_dependency 'sinatra', '>= 1.0'
-  gem.add_runtime_dependency 'json',    '~> 1.4.6'
+  gem.add_runtime_dependency 'redis',        '>= 2.0'
+  gem.add_runtime_dependency 'vegas',        '>= 0.1.0'
+  gem.add_runtime_dependency 'sinatra',      '>= 1.0'
+  gem.add_runtime_dependency 'json',         '~> 1.4.6'
+  gem.add_runtime_dependency 'rack-contrib', '~> 1.1.0' 
   #  gem.add_development_dependency 'rspec', '> 1.2.3'
 end
 Jeweler::RubygemsDotOrgTasks.new
