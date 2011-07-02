@@ -33,5 +33,16 @@ module Soulmate
       })
     )
   end
+  
+
+  attr_writer :server_namespace
+  def server_namespace
+    @server_namespace ||= ''
+  end
+
+  attr_writer :search_term_param_name
+  def search_term_param_name
+    @search_term_param_name ||= :term
+  end
 
 end

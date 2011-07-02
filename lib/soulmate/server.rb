@@ -13,16 +13,16 @@ module Soulmate
       content_type 'application/json', :charset => 'utf-8'
     end
     
-    get '/' do
+    get "#{Soulmate.server_namespace}/" do
       JSON.pretty_generate({ :soulmate => Soulmate::Version::STRING, :status   => "ok" })
     end
     
-    get '/search' do
-      raise Sinatra::NotFound unless (params[:term] and params[:types] and params[:types].is_a?(Array))
+    get "#{Soulmate.server_namespace}/search" do
+      raise Sinatra::NotFound unless (params[Soulmate.search_term_param_name] and params[:types] and params[:types].is_a?(Array))
       
       limit = (params[:limit] || 5).to_i
       types = params[:types].map { |t| normalize(t) }
-      term  = params[:term]
+      term  = params[Soulmate.search_term_param_name]
       
       results = {}
       types.each do |type|
@@ -31,7 +31,7 @@ module Soulmate
       end
       
       JSON.pretty_generate({
-        :term    => params[:term],
+        :term    => params[Soulmate.search_term_param_name],
         :results => results
       })
     end
