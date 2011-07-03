@@ -13,11 +13,11 @@ module Soulmate
       content_type 'application/json', :charset => 'utf-8'
     end
     
-    get "#{Soulmate.server_namespace}/" do
+    get "/#{Soulmate.server_namespace}" do
       JSON.pretty_generate({ :soulmate => Soulmate::Version::STRING, :status   => "ok" })
     end
     
-    get "#{Soulmate.server_namespace}/search" do
+    get "/#{Soulmate.server_namespace}/search" do
       raise Sinatra::NotFound unless (params[Soulmate.search_term_param_name] and params[:types] and params[:types].is_a?(Array))
       
       limit = (params[:limit] || 5).to_i
